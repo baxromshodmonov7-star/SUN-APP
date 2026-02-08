@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>SUN APP</title>
-
-  <!-- Telegram SDK -->
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>SUN APP</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <!-- Language Modal -->
 <div id="langModal" class="modal">
   <div class="modal-box">
-    <h2>Select language</h2>
+    <h2>Выберите язык / Select Language</h2>
     <button onclick="setLanguage('ru')">🇷🇺 Русский</button>
     <button onclick="setLanguage('en')">🇬🇧 English</button>
   </div>
 </div>
 
-<!-- Header -->
 <header>
   <span class="app-name">SUN APP</span>
   <button class="lang-btn" onclick="toggleLanguage()">🌐</button>
 </header>
 
-<!-- Screens -->
 <main>
   <!-- HOME -->
   <section class="screen active" id="home">
-    <div class="balance-card">
+    <div class="balance-top">
       <p class="label">Balance</p>
-      <h1><span id="balance">0</span> TON</h1>
+      <h1 id="balance">0.000</h1>
     </div>
-
+    <div class="ton-circle">
+      <div class="ton-logo">TON</div>
+    </div>
+    <div class="percent-badge" id="percentBadge">+1.0% в день</div>
     <div class="actions">
-      <button class="btn green">➕ Deposit</button>
-      <button class="btn red">➖ Withdraw</button>
-      <button class="btn gray" onclick="openHistory()">📜 History</button>
+      <button class="btn green" onclick="deposit()">Пополнить</button>
+      <button class="btn red" onclick="withdraw()">Вывести</button>
+      <button class="btn gray" onclick="openHistory()">⏱</button>
     </div>
   </section>
 
   <!-- TOP -->
   <section class="screen" id="top">
-    <h2 class="title">🏆 Top players</h2>
+    <h2 class="title">🏆 Top Players</h2>
     <ul id="topList" class="top-list"></ul>
   </section>
 
   <!-- GAMES -->
   <section class="screen" id="games">
-    <h2 class="title">🎮 Games</h2>
+    <h2 class="title">🎮 Arc Games</h2>
     <div class="game-card">🪙 Coin Flip (soon)</div>
     <div class="game-card">👑 Last Leader (soon)</div>
   </section>
@@ -64,15 +62,15 @@
 
   <!-- EARN -->
   <section class="screen" id="earn">
-    <h2 class="title">📈 Earn</h2>
-    <p class="text-muted">Tasks & rewards coming soon</p>
+    <h2 class="title">📈 Earn / Tasks</h2>
+    <p class="text-muted">Задачи и награды скоро</p>
   </section>
 </main>
 
 <!-- Bottom Navigation -->
 <nav>
-  <button onclick="showScreen('home')">Home</button>
   <button onclick="showScreen('top')">Top</button>
+  <button onclick="showScreen('games')">Arc Games</button>
   <button class="center" onclick="showScreen('games')">🎮</button>
   <button onclick="showScreen('friends')">Friends</button>
   <button onclick="showScreen('earn')">Earn</button>
@@ -81,12 +79,12 @@
 <!-- History Modal -->
 <div id="historyModal" class="modal">
   <div class="modal-box">
-    <h2>History</h2>
+    <h2>История</h2>
     <ul id="historyList"></ul>
-    <button onclick="closeHistory()">Close</button>
+    <button onclick="closeHistory()">Закрыть</button>
   </div>
 </div>
 
 <script src="app.js"></script>
 </body>
-    </html>
+</html>
