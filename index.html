@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-<title>SUN APP</title>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SUN APP</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- Language Modal -->
 <div id="langModal" class="modal">
   <div class="modal-box">
-    <h2>Выберите язык / Select Language</h2>
+    <h2>Select Language</h2>
     <button onclick="setLanguage('ru')">🇷🇺 Русский</button>
     <button onclick="setLanguage('en')">🇬🇧 English</button>
   </div>
@@ -24,66 +24,98 @@
 </header>
 
 <main>
-  <!-- HOME -->
   <section class="screen active" id="home">
-    <div class="balance-top">
+    <div class="balance-container">
       <p class="label">Balance</p>
-      <h1 id="balance">0.000</h1>
+      <div class="balance-row">
+        <h1 id="balance">0.000</h1>
+        <span class="currency">TON</span>
+      </div>
     </div>
+
     <div class="ton-circle">
       <div class="ton-logo">TON</div>
     </div>
-    <div class="percent-badge" id="percentBadge">+1.0% в день</div>
-    <div class="actions">
-      <button class="btn green" onclick="deposit()">Пополнить</button>
-      <button class="btn red" onclick="withdraw()">Вывести</button>
-      <button class="btn gray" onclick="openHistory()">⏱</button>
+
+    <div class="status-badge" id="percentBadge">
+      <span class="dot"></span> 
+      <span class="badge-text">+1.0% daily profit</span>
+    </div>
+
+    <div class="actions-grid">
+      <button class="btn btn-deposit" onclick="deposit()">Deposit</button>
+      <button class="btn btn-withdraw" onclick="withdraw()">Withdraw</button>
+      <button class="btn btn-history" onclick="openHistory()">⏱</button>
     </div>
   </section>
 
-  <!-- TOP -->
   <section class="screen" id="top">
     <h2 class="title">🏆 Top Players</h2>
     <ul id="topList" class="top-list"></ul>
   </section>
 
-  <!-- GAMES -->
   <section class="screen" id="games">
     <h2 class="title">🎮 Arc Games</h2>
     <div class="game-card">🪙 Coin Flip (soon)</div>
     <div class="game-card">👑 Last Leader (soon)</div>
   </section>
 
-  <!-- FRIENDS -->
   <section class="screen" id="friends">
     <h2 class="title">👥 Friends</h2>
     <p class="text-muted">Referral system coming soon</p>
   </section>
 
-  <!-- EARN -->
   <section class="screen" id="earn">
-    <h2 class="title">📈 Earn / Tasks</h2>
-    <p class="text-muted">Задачи и награды скоро</p>
+    <h2 class="title">📈 Earn</h2>
+    <p class="text-muted">Tasks and rewards coming soon</p>
   </section>
 </main>
 
-<!-- Bottom Navigation -->
-<nav>
-  <button onclick="showScreen('top')">Top</button>
-  <button onclick="showScreen('games')">Arc Games</button>
-  <button class="center" onclick="showScreen('games')">🎮</button>
-  <button onclick="showScreen('friends')">Friends</button>
-  <button onclick="showScreen('earn')">Earn</button>
-</nav>
-
-<!-- History Modal -->
-<div id="historyModal" class="modal">
-  <div class="modal-box">
-    <h2>История</h2>
-    <ul id="historyList"></ul>
-    <button onclick="closeHistory()">Закрыть</button>
+<div id="actionSheet" class="action-sheet">
+  <div class="sheet-overlay" onclick="closeSheet()"></div>
+  <div class="sheet-content">
+    <div class="sheet-bar"></div>
+    <h3 id="sheetTitle">Deposit</h3>
+    <div class="input-wrapper">
+      <input type="number" id="sheetInput" placeholder="0.00" inputmode="decimal">
+      <span class="input-suffix">TON</span>
+    </div>
+    <div class="sheet-buttons">
+      <button class="btn-confirm" id="confirmBtn">Confirm</button>
+      <button class="btn-cancel" onclick="closeSheet()">Cancel</button>
+    </div>
   </div>
 </div>
+
+<div id="historyModal" class="modal">
+    <div class="modal-box">
+        <h2 id="histTitle">History</h2>
+        <ul id="historyList" class="top-list"></ul>
+        <button onclick="closeHistory()" style="margin-top:15px; background: #3a3b41;">Close</button>
+    </div>
+</div>
+
+<nav class="bottom-nav">
+  <button class="nav-item" onclick="showScreen('top')">
+    <span class="icon">🏆</span>
+    <span class="nav-label">Top</span>
+  </button>
+  <button class="nav-item" onclick="showScreen('games')">
+    <span class="icon">🎮</span>
+    <span class="nav-label">Games</span>
+  </button>
+  <button class="nav-item center-btn" onclick="showScreen('home')">
+    <div class="main-icon">💎</div>
+  </button>
+  <button class="nav-item" onclick="showScreen('friends')">
+    <span class="icon">👥</span>
+    <span class="nav-label">Friends</span>
+  </button>
+  <button class="nav-item" onclick="showScreen('earn')">
+    <span class="icon">💰</span>
+    <span class="nav-label">Earn</span>
+  </button>
+</nav>
 
 <script src="app.js"></script>
 </body>
