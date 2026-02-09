@@ -67,7 +67,7 @@
 
   <section class="screen" id="earn">
     <h2 class="title">📈 Earn</h2>
-    <p class="text-muted">Tasks and rewards coming soon</p>
+    <p class="text-muted">Tasks and rewards soon</p>
   </section>
 </main>
 
@@ -75,7 +75,7 @@
   <div class="sheet-overlay" onclick="closeSheet()"></div>
   <div class="sheet-content">
     <div class="sheet-bar"></div>
-    <h3 id="sheetTitle">Deposit</h3>
+    <h3 id="sheetTitle">Action</h3>
     <div class="input-wrapper">
       <input type="number" id="sheetInput" placeholder="0.00" inputmode="decimal">
       <span class="input-suffix">TON</span>
@@ -91,28 +91,29 @@
     <div class="modal-box">
         <h2 id="histTitle">History</h2>
         <ul id="historyList" class="top-list"></ul>
-        <button onclick="closeHistory()" style="margin-top:15px; background: #3a3b41;">Close</button>
+        <button onclick="closeHistory()" style="margin-top:15px; background: #333;">Close</button>
     </div>
 </div>
 
 <nav class="bottom-nav">
+  <button class="nav-item" onclick="showScreen('home')">
+    <span class="nav-icon">🏠</span>
+    <span class="nav-label">Home</span>
+  </button>
   <button class="nav-item" onclick="showScreen('top')">
-    <span class="icon">🏆</span>
+    <span class="nav-icon">🏆</span>
     <span class="nav-label">Top</span>
   </button>
-  <button class="nav-item" onclick="showScreen('games')">
-    <span class="icon">🎮</span>
-    <span class="nav-label">Games</span>
-  </button>
-  <button class="nav-item center-btn" onclick="showScreen('home')">
-    <div class="main-icon">💎</div>
+  <button class="nav-item center-btn" onclick="showScreen('games')">
+    <div class="main-icon">🎮</div>
+    <span class="nav-label" style="margin-top: 40px;">Games</span>
   </button>
   <button class="nav-item" onclick="showScreen('friends')">
-    <span class="icon">👥</span>
+    <span class="nav-icon">👥</span>
     <span class="nav-label">Friends</span>
   </button>
   <button class="nav-item" onclick="showScreen('earn')">
-    <span class="icon">💰</span>
+    <span class="nav-icon">💰</span>
     <span class="nav-label">Earn</span>
   </button>
 </nav>
